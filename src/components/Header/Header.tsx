@@ -1,5 +1,7 @@
 import React from 'react';
-import './Header.scss';
+import { Link } from 'react-router-dom';
+import { RoutesEnum } from '../../const/routes';
+import './header.scss';
 
 export default function Header() {
     return <>
@@ -12,54 +14,35 @@ export default function Header() {
             padding: '1rem 0 1rem 0'
         }}>
             <div>
-                <h1 style={{
+            <Link to={RoutesEnum.Home}><h1 style={{
                     marginLeft: '3rem',
                     color: '#ce0037'
-                }}>HDparadise</h1>
+                }}>HDparadise</h1></Link>
+                
             </div>
-            <div>
-                <menu>
-                    <ul style={{
-                        display: "flex",
-                        alignItems: 'center',
-                        listStyle: 'none',
-                        gap: '3rem',
-                        color: '#ce0037',
-                        marginLeft: '5rem',
-                        marginRight: '3rem',
-                    }}>
-                        <li>Фильмы</li>
-                        <li>Сериалы</li>
-                        <li>Мультики</li>
-                        <li>Аниме</li>
-                    </ul>
-                </menu>
-            </div>
-            <div>
-                <a href='#' style={{
-                        display: 'flex',
-                        color: '#ce0037',
-                        marginLeft: '5rem',
-                        border: '1px solid red',
-                        padding: 5,
-                        gap: 10,
-                        textDecoration: 'none'
-                    }}>
-                    <span>Поиск</span>
-                    <span>по</span>
-                    <span>сайту</span>
-                </a>
-            </div>
-            <div>
-            <a href='#' style={{
+            <menu>
+                <ul style={{
+                    display: "flex",
+                    alignItems: 'center',
+                    listStyle: 'none',
+                    gap: '3rem',
+                    color: '#ce0037',
+                    marginLeft: '5rem',
+                    marginRight: '3rem',
+                }}>
+                    <Link to={RoutesEnum.Films}><li>Фильмы</li></Link>
+                    <Link to={RoutesEnum.Serials}><li>Сериалы</li></Link>
+                    <Link to={RoutesEnum.Cartoons}><li>Мультики</li></Link>
+                </ul>
+            </menu>
+            <Link to={RoutesEnum.Registration} style={{
                         width: 18,
                         color: '#ce0037',
                         marginLeft: '5rem',
                         textDecoration: 'none'
                     }}>
                     <span>Иконка авторизации</span>
-                </a>
-            </div>
+            </Link>
         </div>
     </>
 }
