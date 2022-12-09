@@ -12,17 +12,16 @@ export default function Header() {
                     <h1 className='logo'>HDparadise</h1>
                 </Link>
             </div>
-            <menu>
-                <ul className='menu-list'>
-                    <Link to={RoutesEnum.Films}><li>Фильмы</li></Link>
-                    <Link to={RoutesEnum.Serials}><li>Сериалы</li></Link>
-                    <Link to={RoutesEnum.Cartoons}><li>Мультики</li></Link>
-                </ul>
+            <menu className='menu-list'>
+                <Link to={RoutesEnum.Films}><li>Фильмы</li></Link>
+                <Link to={RoutesEnum.Serials}><li>Сериалы</li></Link>
+                <Link to={RoutesEnum.Cartoons}><li>Мультики</li></Link>
             </menu>
-            <Link to={RoutesEnum.Registration} className='registration'>
-                    <span>Иконка авторизации</span>
-            </Link>
+            <div>
+                <Link to={RoutesEnum.Registration} className='registration'>
+                        <span>Иконка авторизации</span>
+                </Link>
+            </div>
         </div>
-        <Background />
     </>
 }
