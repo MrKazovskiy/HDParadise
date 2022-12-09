@@ -17,7 +17,7 @@ function List() {
         })
         .then(res => {
             console.log(res);
-            setID(res)
+            setID(res.data.data)
         })
         .catch((err) => {
             console.error(err)
