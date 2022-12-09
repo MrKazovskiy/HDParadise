@@ -5,8 +5,9 @@ import './_list.scss';
 
 function List() {
     const [id , setID] = useState<any>();
-    // const [films , setFilms] = useState<any>();
+    const [films , setFilms] = useState<any>();
     console.log(id);
+    console.log(films);
     
     const getID = async () => {
         await instance({
@@ -23,18 +24,24 @@ function List() {
         })
     }
 
-    // const dataList = async ()  => {
-    //    const data = await instance.get(`/film/303`)
-    //         .then(res => {
-    //             console.log(res);
-    //             return res.data
-    //         })
-    // API_KEY,
-    //         setFilms(data)
-    // }
+    const dataList = async ()  => {
+        await instance({
+            method: 'get',
+            url: `/film/${id}`,
+            withCredentials: false,
+        })
+        .then(res => {
+            console.log(res);
+            setFilms(res)
+        })
+        .catch((err) => {
+            console.error(err);
+        })
+    }
 
     useEffect(()=> {
         getID();
+        dataList();
     }, [])
 
     return <>
@@ -51,7 +58,4 @@ function List() {
 }
 
 export default List;
-// function dataList() {
-//     throw new Error('Function not implemented.');
-// }
 
