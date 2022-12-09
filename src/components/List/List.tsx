@@ -1,11 +1,13 @@
 import React from 'react'
-import './list.scss';
+import './_list.scss';
 
 function List() {
     
     return <>
-        <div className='list__block'>
-            <h1>Смотрите кино бесплатно</h1>
+        <div className='container'>
+            <div className='list__block'>
+                <h1>Смотрите кино бесплатно</h1>
+            </div>
         </div>
     </>
 }

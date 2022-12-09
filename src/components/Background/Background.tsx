@@ -1,6 +1,6 @@
 import React from 'react';
 import bgImg from './background.jpg';
-import './background.scss';
+import './_background.scss';
 
 function Background() {
     return <>
