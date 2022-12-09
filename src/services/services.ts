@@ -2,7 +2,7 @@ import axios from 'axios';
 import { API_URL, API_KEY } from '../const/api';
 
 const instance = axios.create({
-    withCredentials: true,
+    withCredentials: false,
     baseURL: API_URL,
     headers: {
         'API-KEY': API_KEY,

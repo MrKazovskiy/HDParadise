@@ -12,7 +12,7 @@ function List() {
         await instance({
             method: 'get',
             url: API_ID,
-            withCredentials: true,
+            withCredentials: false,
         })
         .then(res => {
             console.log(res);
