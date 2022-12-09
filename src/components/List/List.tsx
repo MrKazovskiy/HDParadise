@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { API_KEY, API_ID } from '../../const/api';
+import { API_ID } from '../../const/api';
 import instance from '../../services/services';
 import './_list.scss';
 
@@ -23,6 +23,7 @@ function List() {
     //             console.log(res);
     //             return res.data
     //         })
+    // API_KEY,
     //         setFilms(data)
     // }
 
