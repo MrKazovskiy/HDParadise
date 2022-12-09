@@ -4,14 +4,15 @@ import instance from '../../services/services';
 import './_list.scss';
 
 function List() {
-    const [films , setFilms] = useState<any>();
-    console.log(films);
+    const [id , setID] = useState<any>();
+    // const [films , setFilms] = useState<any>();
+    console.log(id);
     
     const getID = async () => {
         await instance.get(API_ID)
                 .then(res => {
                     console.log(res);
-                    setFilms(res)
+                    setID(res)
                     return res
                 })
     }
@@ -25,9 +26,9 @@ function List() {
     //         setFilms(data)
     // }
 
-    // useEffect(()=> {
-    //     dataList();
-    // }, [])
+    useEffect(()=> {
+        getID();
+    }, [])
 
     return <>
         <main className='container'>
