@@ -9,12 +9,14 @@ function List() {
     console.log(id);
     
     const getID = async () => {
-        await instance.get(API_ID)
-                .then(res => {
-                    console.log(res);
-                    setID(res)
-                    return res
-                })
+        await instance.get(API_ID, {
+            withCredentials: true,
+        })
+        .then(res => {
+            console.log(res);
+            setID(res)
+            return res
+        })
     }
 
     // const dataList = async ()  => {
