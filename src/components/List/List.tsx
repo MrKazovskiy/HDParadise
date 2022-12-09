@@ -9,13 +9,17 @@ function List() {
     console.log(id);
     
     const getID = async () => {
-        await instance.get(API_ID, {
+        await instance({
+            method: 'get',
+            url: API_ID,
             withCredentials: true,
         })
         .then(res => {
             console.log(res);
             setID(res)
-            return res
+        })
+        .catch((err) => {
+            console.error(err)
         })
     }
 
