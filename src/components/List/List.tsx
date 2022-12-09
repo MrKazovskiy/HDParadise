@@ -1,7 +1,7 @@
 import React from 'react';
 // import React, { useEffect, useState } from 'react';
 // import { API_KEY, API_ID } from '../../const/api';
-import instance from '../../services/services';
+// import instance from '../../services/services';
 import './_list.scss';
 
 function List() {
@@ -44,7 +44,7 @@ function List() {
 }
 
 export default List;
-function dataList() {
-    throw new Error('Function not implemented.');
-}
+// function dataList() {
+//     throw new Error('Function not implemented.');
+// }
 
