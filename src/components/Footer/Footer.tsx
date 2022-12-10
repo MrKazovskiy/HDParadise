@@ -18,7 +18,7 @@ function Footer() {
                 link.map( (item) => (
                   <li key={item.text} className={styles.item_link}>
                       <Link to={item.href}>
-                        <a className={styles.link}>{item.text}</a>
+                        <span className={styles.link}>{item.text}</span>
                       </Link>
                   </li>
                 ))
