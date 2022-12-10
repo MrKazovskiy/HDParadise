@@ -10,13 +10,11 @@ import className from 'classnames';
 export default function List() {
     const [films , setFilms] = useState<any>();
     const [serials , setSerials] = useState<any>();
-    console.log(`${films}, ${serials}`);
     
     
     const getFilms = async () => {
         await instance.get(`/movie?field=type&search=movie&field=year&search=2022-2022&sortField=year&sortType=1&sortField=votes.imdb&sortType=-1&token=${API_KEY}`)
         .then( res => {            
-            console.log(res.data.docs);
             setFilms(res.data.docs)
         })
         .catch((err) => {
@@ -27,7 +25,6 @@ export default function List() {
     const getSerials = async () => {
         await instance.get(`/movie?field=type&search=tv-series&field=year&search=2022-2022&sortField=year&sortType=1&sortField=votes.imdb&sortType=-1&token=${API_KEY}`)
         .then( res => {            
-            console.log(res.data.docs);
             setSerials(res.data.docs)
         })
         .catch((err) => {
@@ -55,7 +52,7 @@ export default function List() {
                     <li 
                         key={item.id} 
                         className={styles.item}
-                    >
+                        >
                         <div className={styles.top}>
                             <div>
                                     <div>
@@ -96,7 +93,7 @@ export default function List() {
                         <div className={styles.top}>
                             <div>
                                     <div>
-                                        <Link to={`${RoutesEnum.Films}/${item.id}`} className={styles.imageContainer}>
+                                        <Link to={`${RoutesEnum.Serials}/:${item.id}`} className={styles.imageContainer}>
                                             <p>{item.name}</p>
                                             <span className={styles.caption}>
                                                 <img srcSet={item.poster.previewUrl} alt={item.description} className={styles.image}/>
