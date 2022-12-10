@@ -5,9 +5,10 @@ const instance = axios.create({
     withCredentials: false,
     baseURL: API_URL,
     headers: {
-        'API-KEY': API_KEY,
+        'X-API-KEY': API_KEY,
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
+        // 'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Origin': 'https://localhost:3000',
     },
 });
 

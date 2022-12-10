@@ -8,7 +8,7 @@ import { BrowserRouter } from 'react-router-dom';
 import './styles/_global.scss';
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById('__cinema') as HTMLElement
 );
 root.render(
   <React.StrictMode>
