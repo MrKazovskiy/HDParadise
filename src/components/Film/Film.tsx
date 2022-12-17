@@ -7,7 +7,7 @@ import { IKinoMovie } from '../../types/IKinoMovie';
 
 
 type FilmItemParams = {
-  id: string;
+  id: string | undefined;
 }
 
 export const Film: FC = () => {
@@ -27,7 +27,9 @@ export const Film: FC = () => {
             console.error(err)
         })
       }
-    }, [])
+    }, []);  // eslint-disable-next-line
+   
+    
 
 
     const navigate = useNavigate();
@@ -40,7 +42,7 @@ export const Film: FC = () => {
           <button onClick={() => handler()}>Back</button>
           <section>
             <div>
-              <img src={film?.poster.previewUrl} alt={film?.description} />
+              <img src={film?.poster.previewUrl} alt='The Batman' />
             </div>
             <div>
             <h1>{film?.name}({film?.year})</h1>
