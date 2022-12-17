@@ -17,19 +17,16 @@ export const Film: FC = () => {
     const params = useParams<FilmItemParams>();
     const id = params.id
 
-
-    const getFilm = async () => {
-      await instance.get(`/movie?search=${id}&field=id&token=${API_KEY}`)
-      .then( res => {            
-          setFilm(res.data)
-      })
-      .catch((err) => {
-          console.error(err)
-      })
-    }
-
-    useEffect( () => {
-      getFilm()
+    useEffect((): any => {
+      return async () => {
+        await instance.get(`/movie?search=${id}&field=id&token=${API_KEY}`)
+        .then( res => {            
+            setFilm(res.data)
+        })
+        .catch((err) => {
+            console.error(err)
+        })
+      }
     }, [])
 
 
