@@ -22,6 +22,8 @@ export default function Header() {
                         style={{
                             margin: '1rem 0 -1rem 3rem'
                         }} 
+                        alt='HDParadise'
+                        draggable="false"
                     />
                 </Link>
             </div>

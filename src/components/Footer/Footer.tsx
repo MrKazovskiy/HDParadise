@@ -24,10 +24,11 @@ function Footer() {
             >
               <img 
                 src={logo} 
-                alt='Logo on footer' 
+                alt='HDParadise' 
                 style={{
                   marginBottom: '-1rem'
-                }} 
+                }}
+                draggable="false" 
               />
             </Link>
           </div>
