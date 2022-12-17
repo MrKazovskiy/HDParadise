@@ -19,7 +19,7 @@ export const Film: FC = () => {
 
     useEffect((): any => {
       return async () => {
-        await instance.get(`/movie?search=${id}&field=id&token=${API_KEY}`)
+        await instance.get(`/movie?search=${params.id}&field=id&token=${API_KEY}`)
         .then( res => {            
             setFilm(res.data)
         })
@@ -27,7 +27,7 @@ export const Film: FC = () => {
             console.error(err)
         })
       }
-    }, []);  // eslint-disable-next-line
+    }, [id, params.id]);
    
     
 
