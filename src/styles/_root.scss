@@ -1,6 +1,6 @@
 :root {
 	// base
-	--font-family: 'Fira sans', sans-serif;
+	--font-family: 'Lobsters';
 	--content-width: 1230px;
 	--container-offset: 15px;
 	--container-width: calc(var(--content-width) + (var(--container-offset) * 2));
@@ -12,6 +12,7 @@
 	--color-green: #00a340;
 	--color-dark: #141414;
 	--color-light-dark: #1f1f1f;
-	--color-primary: #005382;
+	--color-mauve: #A96762;
+	--color-mandarin: #A96762;
 	--color-dark-primary: #003f63;
 }

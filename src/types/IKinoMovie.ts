@@ -3,6 +3,7 @@ import { IKinoFact } from './IKinoFact';
 export interface IKinoMoviePoster {
 	previewUrl: string;
 	url: string;
+	_id: string;
 }
 
 interface IKinoMovieTrailer {
@@ -17,6 +18,7 @@ export interface IKinoMovieRating {
 	imdb: number;
 	kp: number;
 	russianFilmCritics: number;
+	_id: string;
 }
 
 interface IKinoMovieBudget {
@@ -93,6 +95,7 @@ interface IKinoMovieFees {
 }
 
 export interface IKinoMovie {
+  	data: any;
 	ageRating: number;
 	alternativeName: string;
 	backdrop: { url: string };
@@ -105,6 +108,7 @@ export interface IKinoMovie {
 	facts: IKinoFact[];
 	genres: { name: string }[];
 	id: number;
+	_id: string | undefined;
 	enName: string;
 	images: { framesCount: number };
 	lists: [];
