@@ -11,23 +11,24 @@ type FilmItemParams = {
 }
 
 export const Film: FC = () => {
-    const [film , setFilm] = useState<IKinoMovie>();
-    console.log(film);
-    
+    const [film , setFilm] = useState<IKinoMovie>();   
+
     const params = useParams<FilmItemParams>();
     const id = params.id
 
-    useEffect((): any => {
-      return async () => {
-        await instance.get(`/movie?search=${params.id}&field=id&token=${API_KEY}`)
-        .then( res => {            
+
+    useEffect(() => {
+      const getFilm = async () => {
+        await instance.get(`/movie?search=${id}&field=id&token=${API_KEY}`)
+        .then( res => {                     
             setFilm(res.data)
         })
         .catch((err) => {
             console.error(err)
         })
       }
-    }, [id, params.id]);
+      getFilm()
+    }, [id]);
    
     
 
@@ -39,10 +40,10 @@ export const Film: FC = () => {
 
     return <>
       <main>
-          <button onClick={() => handler()}>Back</button>
+          <button onClick={() => handler()}>На главную</button>
           <section>
             <div>
-              <img src={film?.poster.previewUrl} alt='The Batman' />
+              <img src={film?.poster.previewUrl} alt={film?.description} />
             </div>
             <div>
             <h1>{film?.name}({film?.year})</h1>
@@ -124,14 +125,6 @@ export const Film: FC = () => {
                   </span>
                 </li>
               </ul>
-            </div>
-            <div>
-              <div
-                id="kinobd"
-                data-kinopoisk={id}
-                data-bg="#000"
-                data-resize="1"
-              />
             </div>
           </section>
       </main>

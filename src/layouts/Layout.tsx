@@ -13,7 +13,7 @@ type ChildrenProp = {
   children: React.ReactNode;
 };
 
-export const Layout: FC<ChildrenProp> = ( { children }, { filmItem }) => {
+export const Layout: FC<ChildrenProp> = ( { children } ) => {
     return <> 
       <Header />
       <Routes>

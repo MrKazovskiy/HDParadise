@@ -54,7 +54,7 @@ export default function Header() {
                     <span 
                         className={styles.link}
                     >
-                        Мультики
+                        Мультфильмы
                     </span>
                 </Link>
             </div>

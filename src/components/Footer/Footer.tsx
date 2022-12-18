@@ -52,6 +52,7 @@ function Footer() {
                 ))
               }
           </ul>
+          <span className={styles.copy}>&#169; 2022 HDParadise</span>
         </div>
       </footer>
     </>
