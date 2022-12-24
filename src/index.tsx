@@ -4,6 +4,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 // import { store } from './store/store';
 // import { Provider } from 'react-redux';
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 import { BrowserRouter } from 'react-router-dom';
 import './styles/_global.scss';
 

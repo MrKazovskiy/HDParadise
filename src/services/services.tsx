@@ -14,11 +14,12 @@ export const instance = axios.create({
 
 export const Services: FC = () => {
     const [films , setFilms] = useState<any>([]);   
-    const [serials , setSerials] = useState<any>([]);    
- 
+    const [serials , setSerials] = useState<any>([]);        
+    const [cartoons , setCartoons] = useState<any>([]);               
+    
     
     const getFilms = async () => {
-        await instance.get(`/movie?field=type&search=movie&field=year&search=2022-2022&sortField=year&sortType=1&sortField=votes.imdb&sortType=-1&token=${API_KEY}`)
+        await instance.get(`/movie?&field=type&search=movie&field=year&search=2022-2022&sortField=year&sortType=1&sortField=votes.imdb&sortType=-1&token=${API_KEY}`)
         .then( res => {            
             setFilms(res.data.docs)
         })
@@ -37,14 +38,25 @@ export const Services: FC = () => {
         })
     }
 
+    const getCartoons = async () => {
+        await instance.get(`/movie?field=type&search=cartoon&field=year&search=2022-2022&sortField=year&sortType=1&sortField=votes.imdb&sortType=-1&token=${API_KEY}`)
+        .then( res => {            
+            setCartoons(res.data.docs)
+        })
+        .catch((err) => {
+            console.error(err)
+        })
+    }
+
 
     useEffect(() => {
         getFilms();
         getSerials();
+        getCartoons();
     }, [])
 
     return <>
-        <Main itemsFilm={films} itemsSerial={serials} />
+        <Main itemsFilm={films} itemsSerial={serials} itemsCartoon={cartoons} />
     </>
 }
 

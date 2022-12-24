@@ -6,21 +6,28 @@ import className from 'classnames';
 import { IKinoMovie } from '../../types/IKinoMovie';
 import { AspectRatio } from 'react-aspect-ratio';
 import { convertMovieType } from '../../helpers/convertMovieType/convertMovieType';
+import { Sliders } from '../UI/Slider/Slider';
+
 
 interface MainListProps {
     itemsFilm: IKinoMovie[];
     itemsSerial: IKinoMovie[];
+    itemsCartoon: IKinoMovie[];
 }
 
 
-export const Main: FC<MainListProps> = ( { itemsFilm, itemsSerial } ) => {
+export const Main: FC<MainListProps> = ( { itemsFilm, itemsSerial, itemsCartoon } ) => {
     const filmItem = [...itemsFilm];   
     const serialItem = [...itemsSerial];  
-    
+    const cartoonItem = [...itemsCartoon];  
+
     return <>
         <main 
             className={styles.main}
         >
+            <section>
+                <Sliders />
+            </section>
             <section>
                 <div
                 className={className('container', styles.container)}
@@ -83,11 +90,21 @@ export const Main: FC<MainListProps> = ( { itemsFilm, itemsSerial } ) => {
                                             {item.name ? item.name : item.enName || item.alternativeName}
                                             </p>
                                         </Link>
+                                        {item.rating?.imdb ? item.rating?.imdb > 5 &&
+                                        <span
+                                            className={className(styles.rating, styles.green)}
+                                            
+                                        >
+                                            <p>{ item.rating?.imdb }</p>
+                                        </span>
+                                        : 
+                                        <span
+                                        className={className(styles.rating, styles.red)}
+                                        >
+                                            <p>{ item.rating?.imdb }</p>
+                                        </span>
+                                        }
                                     </div>
-                                    <p
-                                    >
-                                        {item.rating?.imdb ? item.rating?.imdb : item.rating?.kp || item.rating?.filmCritics}
-                                    </p>
                                     <span 
                                         className={styles.info}
                                     >
@@ -96,7 +113,6 @@ export const Main: FC<MainListProps> = ( { itemsFilm, itemsSerial } ) => {
                                 </li>
                         )}
                     </ul>
-                    <button className={styles.button}><span className={styles.span_view_all}>Показать все</span></button>
                 </div>
             </section>
             <hr className={styles.center_diamond} />
@@ -145,13 +161,13 @@ export const Main: FC<MainListProps> = ( { itemsFilm, itemsSerial } ) => {
                                                     className={styles.imageContainer}
                                                 >
                                                     <AspectRatio 
-                                                        ratio={2/3}
+                                                        ratio='2/3'
+                                                        className={styles.image}
+                                                        sizes='100vh'
                                                     >
                                                         <img
-                                                            src={item.poster.url}
+                                                            src={item.poster?.previewUrl || item.poster?.url}
                                                             alt={item.description}
-                                                            className={styles.image}
-                                                            sizes='100vw'
                                                         />
                                                     </AspectRatio>
                                                 </div>
@@ -162,11 +178,21 @@ export const Main: FC<MainListProps> = ( { itemsFilm, itemsSerial } ) => {
                                             {item.name ? item.name : item.enName || item.alternativeName}
                                             </p>
                                         </Link>
-                                    </div>
-                                    <p
+                                    {item.rating?.imdb ? item.rating?.imdb > 5 &&
+                                    <span
+                                        className={className(styles.rating, styles.green)}
+                                        
                                     >
-                                        {item.rating?.imdb ? item.rating?.imdb : item.rating?.kp || item.rating?.filmCritics}
-                                    </p>
+                                        <p>{ item.rating?.imdb }</p>
+                                    </span>
+                                    : 
+                                    <span
+                                    className={className(styles.rating, styles.red)}
+                                    >
+                                        <p>{ item.rating?.imdb }</p>
+                                    </span>
+                                    }
+                                    </div>
                                     <span 
                                         className={styles.info}
                                     >
@@ -175,7 +201,94 @@ export const Main: FC<MainListProps> = ( { itemsFilm, itemsSerial } ) => {
                                 </li>
                         )}
                     </ul>
-                    <button className={styles.button}><span className={styles.span_view_all}>Показать все</span></button>
+                </div>
+            </section>
+            <hr className={styles.center_diamond} />
+            <section>
+                <div
+                className={className('container', styles.container)}
+                >
+                    <div
+                    className={styles.top_block_new_films}
+                    >
+                        <h2>
+                        Новинки мультипликации
+                        </h2>
+                        <button
+                            className={styles.button}
+                        >
+                            <Link
+                            to={RoutesEnum.Films}
+                            >
+                                <span
+                                    className={styles.span_views_all_film_serial}
+                                >
+                                    Смотреть все
+                                </span>
+                            </Link>
+                        </button>
+                    </div>
+                    <ul
+                        className={className('list-reset', styles.grid)}
+                    >
+                        {
+                            cartoonItem?.map( (item) =>
+                                <li
+                                    key={item.id}
+                                    className={styles.item}
+                                >
+                                    <div className={styles.top_block_films}>
+                                        <Link
+                                            to={`${RoutesEnum.Films}/${item.id}`}
+                                            key={item.id}
+                                        >
+                                            <div
+                                                className={styles.caption}
+                                            >
+                                                <div 
+                                                    className={styles.imageContainer}
+                                                >
+                                                    <AspectRatio 
+                                                        ratio='2/3'
+                                                        className={styles.image}
+                                                        sizes='100vh'
+                                                    >
+                                                        <img
+                                                            src={item.poster?.previewUrl || item.poster?.url}
+                                                            alt={item.description}
+                                                        />
+                                                    </AspectRatio>
+                                                </div>
+                                            </div>
+                                            <p
+                                            className={styles.title}
+                                            >
+                                            {item.name ? item.name : item.enName || item.alternativeName}
+                                            </p>
+                                        </Link>
+                                    {item.rating?.imdb ? item.rating?.imdb > 5 &&
+                                    <span
+                                        className={className(styles.rating, styles.green)}
+                                        
+                                    >
+                                        <p>{ item.rating?.imdb }</p>
+                                    </span>
+                                    : 
+                                    <span
+                                    className={className(styles.rating, styles.red)}
+                                    >
+                                        <p>{ item.rating?.imdb }</p>
+                                    </span>
+                                    }
+                                    </div>
+                                    <span 
+                                        className={styles.info}
+                                    >
+                                        {item.year}, {convertMovieType(item.type)}
+                                    </span>
+                                </li>
+                        )}
+                    </ul>
                 </div>
             </section>
         </main>

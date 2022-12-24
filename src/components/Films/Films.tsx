@@ -1,7 +1,9 @@
-import React from 'react'
+import React from 'react';
+import { FilmsPage } from '../../pages/Films/FilmsPage';
+
 
 export default function Films() {
-  return (
-    <div>Films</div>
-  )
+  return <>
+    <FilmsPage />
+  </>
 }

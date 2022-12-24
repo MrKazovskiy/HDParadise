@@ -15,18 +15,18 @@ hr {
 	border: 0;
 	height: 1px;
 	position: relative;
-
+	overflow: visible;
 	&.center_diamond{
 		background: var(--color-mandarin);
 		&:before{
 			content: "";
-			width: 16px;
-			height: 16px;
+			width: 12px;
+			height: 12px;
 			background: var(--color-mandarin);
 			display: inline-block;
 			border: 2px solid var(--color-mandarin);
 			position: absolute;
-			top: -7px;
+			top: -6px;
 			left: 50%;
 			margin: 0 0 0 -3px;
 			transform:rotate(45deg);
@@ -159,6 +159,40 @@ hr {
 	color: rgba(#1f1f1f, 0.8);
 }
 
+.rating {
+	position: absolute;
+	z-index: 4;
+	display: flex;
+	align-items: center;
+	top: 4px;
+	left: 3px;
+	color: var(--color-white);
+	padding: 2px 10px;
+	font-weight: 400;
+	font-size: 13px;
+	line-height: 4px;
+	text-align: center;
+	background-color: var(--color-primary);
+	border-radius: 20px;
+
+	@media (max-width: 1024px) {
+		left: 10px;
+	}
+
+	svg {
+		width: 14px;
+		height: 14px;
+		margin-right: 5px;
+	}
+}
+
+.green {
+	background-color: var(--color-green);
+}
+
+.red {
+	background-color: var(--color-red);
+}
 
 .button {
 	font-size: 18px;

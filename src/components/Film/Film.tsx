@@ -9,6 +9,8 @@ import className from 'classnames';
 import { convertMovieType } from '../../helpers/convertMovieType/convertMovieType';
 import { convertNumbers } from '../../helpers/ConvertNumbers/convertNumbers';
 import { convertTimestampToDate } from '../../helpers/convertTimestampToDate/convertTimestampToDate';
+// import Slider from 'react-slick';
+// import { Sliders } from '../UI/Slider/Slider';
 
 type FilmItemParams = {
   id: string | undefined;
@@ -16,11 +18,54 @@ type FilmItemParams = {
 
 export const Film: FC = () => {
     const [film , setFilm] = useState<IKinoMovie>();   
-    console.log(film);
     
     const params = useParams<FilmItemParams>();
     const id = params.id
-
+  
+    const settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      responsive: [
+          {
+            breakpoint: 1200,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              infinite: true,
+              dots: true,
+            },
+          },
+    
+          {
+            breakpoint: 1025,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              infinite: true,
+              dots: true,
+            },
+          },
+          {
+            breakpoint: 769,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              initialSlide: 1,
+            },
+          },
+          {
+            breakpoint: 577,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              initialSlide: 1,
+            },
+          },
+        ],
+    };
 
     useEffect(() => {
       const getFilm = async () => {
@@ -77,9 +122,6 @@ export const Film: FC = () => {
                     {film?.slogan}
                   </span>
                 <div className={styles.btns}>
-                  <button className={styles.button}>
-                    Смотреть
-                  </button>
                   <button className={styles.button}>
                     Буду смотреть
                   </button>
@@ -153,7 +195,34 @@ export const Film: FC = () => {
                 </div>
               </div>
             </div>
+            <div>
+              <h3 className={styles.description}>Описание</h3>
+            </div>
+            <div>
+              <p className={styles.film_description}>{film?.description}</p>
+            </div>
+            <div className={styles.videoContainer}>
+                <div
+                    id="kinoplayertop"
+                    data-kinopoisk={id}
+                    className={styles.video}
+                    data-show-errors="true"
+                    data-ratio="16by9"
+                />
           </div>
+          </div>
+          {/* <Slider {...settings}>
+                {
+                    film?.map((item: any) => {
+                    return <React.Fragment key={item.id}>
+                            <div>
+                                <h4>{item?.name || item?.alternativeName}</h4>
+                                <img src={item?.poster?.previewUrl || item?.poster?.url} alt={item?.name || item?.alternativeName}/>
+                            </div>
+                        </React.Fragment>
+                    })
+                }
+            </Slider> */}
         </section>
       </main>
     </>

@@ -13,20 +13,16 @@ export default function Header() {
         <div 
             className={className('container', styles.container)}
         >
-            <div>
-                <Link 
-                    to={RoutesEnum.Home}
-                >
-                    <img 
-                        src={logo} 
-                        style={{
-                            margin: '1rem 0 -1rem 3rem'
-                        }} 
-                        alt='HDParadise'
-                        draggable="false"
-                    />
-                </Link>
-            </div>
+            <Link 
+                to={RoutesEnum.Home}
+                className={className(styles.logo)}
+            >
+                <img
+                    src={logo}
+                    alt='HDParadise'
+                    draggable="false"
+                />
+            </Link>
             <div 
                 className={styles.menu}
             >

@@ -7,6 +7,7 @@ import { Film } from '../components/Film/Film';
 import Serial from '../components/Serial/Serial';
 import Cartoons from '../components/Cartoons/Cartoons';
 import Films from '../components/Films/Films';
+import { FilmsPage } from '../pages/Films/FilmsPage';
 
 
 type ChildrenProp = {
@@ -23,7 +24,7 @@ export const Layout: FC<ChildrenProp> = ( { children } ) => {
             />
             <Route 
                 path={`${RoutesEnum.Films}`}
-                element={<Films /> }
+                element={<FilmsPage /> }
             />
             <Route
               path={`${RoutesEnum.Films}/:id`}

@@ -7,9 +7,16 @@
 	background-color: var(--color-dark);
 	border-bottom-left-radius: 18px;
 	border-bottom-right-radius: 18px;
+	padding: 10px;
 	@media (max-width: 768px) {
 	}
 }
+
+.header_left{
+	width: 100%;
+    padding: 0;
+}
+
 .container {
 	display: flex;
 	align-items: center;
@@ -19,9 +26,10 @@
 		padding-right: 35px;
 	}
 
-	@media (max-width: 620px) {
+	@media (max-width: 663px) {
 		display: flex;
-		justify-content: space-between;
+		flex-direction: column;
+		gap: 20px;
 		padding: 18px var(--container-offset);
 	}
 
@@ -29,6 +37,22 @@
 		padding: 17px var(--container-offset);
 	}
 }
+
+.logo {
+	position: relative;
+	z-index: 2;
+	display: inline-block;
+	width: 119px;
+	height: 70px;
+	flex-shrink: 0;
+
+	@media (max-width: 768px) {
+		width: 89px;
+		height: 18px;
+		margin-right: auto;
+	}
+}
+
 .menu{
     display: flex;
     align-items: center;
