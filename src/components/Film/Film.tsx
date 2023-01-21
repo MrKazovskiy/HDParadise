@@ -152,8 +152,6 @@ export const Film: FC = () => {
             <div>
               <p className={styles.film_description}>{film?.description}</p>
             </div>
-            {/* {
-              loading ? !loading :
               <div className={styles.videoContainer}>
                 <div
                     id="kinoplayertop"
@@ -161,14 +159,6 @@ export const Film: FC = () => {
                     className={styles.video}
                     data-show-errors="true"
                     data-ratio="16by9"
-                />
-              </div>
-            } */}
-              <div className={styles.videoContainer}>
-                <div
-                    id="kinobd"
-                    data-kinopoisk={id}
-                    className={styles.video}
                 />
               </div>
           </div>
