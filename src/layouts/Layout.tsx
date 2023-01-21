@@ -6,7 +6,6 @@ import { RoutesEnum } from '../const/routes';
 import { Film } from '../components/Film/Film';
 import Serial from '../components/Serial/Serial';
 import Cartoons from '../components/Cartoons/Cartoons';
-import Films from '../components/Films/Films';
 import { FilmsPage } from '../pages/Films/FilmsPage';
 
 
@@ -34,10 +33,6 @@ export const Layout: FC<ChildrenProp> = ( { children } ) => {
                 path={`${RoutesEnum.Serials}`}
                 element={<Serial /> }
             />
-             {/* <Route
-              path={`${RoutesEnum.Serials}/:id`}
-              element={<}
-            /> */}
             <Route 
                 path={`${RoutesEnum.Cartoons}`}
                 element={<Cartoons /> }

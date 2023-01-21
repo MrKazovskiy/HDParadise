@@ -6,7 +6,6 @@ import className from 'classnames';
 import { IKinoMovie } from '../../types/IKinoMovie';
 import { AspectRatio } from 'react-aspect-ratio';
 import { convertMovieType } from '../../helpers/convertMovieType/convertMovieType';
-import { Sliders } from '../UI/Slider/Slider';
 
 
 interface MainListProps {
@@ -25,9 +24,6 @@ export const Main: FC<MainListProps> = ( { itemsFilm, itemsSerial, itemsCartoon 
         <main 
             className={styles.main}
         >
-            {/* <section>
-                <Sliders />
-            </section> */}
             <section>
                 <div
                 className={className('container', styles.container)}

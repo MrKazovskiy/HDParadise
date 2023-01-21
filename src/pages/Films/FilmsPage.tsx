@@ -11,45 +11,43 @@ import className from 'classnames';
 
 
 export const FilmsPage = () => {
-    const [items, setItem] = useState<IKinoMovie[]>([]);    
-    console.log(items);
-    
-    const [currentPage, setCurrentPage] = useState(1);
+    const [items, setItem] = useState<IKinoMovie[]>([]);        
+    // const [currentPage, setCurrentPage] = useState(1);
     const [query, setQuery] = useState(true);
-    const [totalCount, setTotalCount] = useState(0);
+    // const [totalCount, setTotalCount] = useState(0);
 
 
     useEffect(() => {
         if(query)  {
-            instance.get(`/movie?&field=type&search=movie&field=year&search=1860-2022&sortField=year&sortType=1&sortField=votes.imdb&sortType=-1&token=${API_KEY}&page=${currentPage}`)
+            instance.get(`/movie?&field=type&search=movie&field=year&search=1860-2022&sortField=year&sortType=1&sortField=votes.imdb&sortType=-1&token=${API_KEY}&page=1`)
                 .then(res => {
                     console.log(res.data.docs);
                     
                     setItem(res.data.docs);
-                    setCurrentPage(prevState => prevState + 1);
-                    setTotalCount(res.headers.get['x-total-count'] || res.headers['x-total-count']);
+                    // setCurrentPage(prevState => prevState + 1);
+                    // setTotalCount(res.headers.get['x-total-count'] || res.headers['x-total-count']);
                 })
                 .finally(() => setQuery(false));
         }      
     }, [query])
 
-    useEffect(() => {
-        document.addEventListener('scroll', handlerScroll);
-        return function () {
-            document.removeEventListener('scroll', handlerScroll);
-        }
-    }, [totalCount])
+    // useEffect(() => {
+    //     document.addEventListener('scroll', handlerScroll);
+    //     return function () {
+    //         document.removeEventListener('scroll', handlerScroll);
+    //     }
+    // }, [totalCount])
       
-    const handlerScroll = (e: any): void => {
-        const scrollHeight = e.target.documentElementscrollHeight;
-        const scrollTop = e.target.documentElement.scrollTop;
-        if(scrollHeight - (scrollTop + window.innerHeight) < 100 &&
-        items.length < totalCount) {
-            setQuery(true);
+    // const handlerScroll = (e: any): void => {
+    //     const scrollHeight = e.target.documentElementscrollHeight;
+    //     const scrollTop = e.target.documentElement.scrollTop;
+    //     if(scrollHeight - (scrollTop + window.innerHeight) < 100 &&
+    //     items.length < totalCount) {
+    //         setQuery(true);
             
-            console.log('scroll');
-        }    
-    }
+    //         console.log('scroll');
+    //     }    
+    // }
 
     return <>
         <main className={styles.main}>
