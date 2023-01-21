@@ -25,9 +25,9 @@ export const Main: FC<MainListProps> = ( { itemsFilm, itemsSerial, itemsCartoon 
         <main 
             className={styles.main}
         >
-            <section>
+            {/* <section>
                 <Sliders />
-            </section>
+            </section> */}
             <section>
                 <div
                 className={className('container', styles.container)}

@@ -18,54 +18,8 @@ type FilmItemParams = {
 
 export const Film: FC = () => {
     const [film , setFilm] = useState<IKinoMovie>();   
-    
     const params = useParams<FilmItemParams>();
     const id = params.id
-  
-    const settings = {
-      dots: true,
-      infinite: true,
-      speed: 500,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      responsive: [
-          {
-            breakpoint: 1200,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1,
-              infinite: true,
-              dots: true,
-            },
-          },
-    
-          {
-            breakpoint: 1025,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1,
-              infinite: true,
-              dots: true,
-            },
-          },
-          {
-            breakpoint: 769,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1,
-              initialSlide: 1,
-            },
-          },
-          {
-            breakpoint: 577,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1,
-              initialSlide: 1,
-            },
-          },
-        ],
-    };
 
     useEffect(() => {
       const getFilm = async () => {
@@ -79,9 +33,6 @@ export const Film: FC = () => {
       }
       getFilm()
     }, [id]);
-   
-    
-
 
     const navigate = useNavigate();
     const handler = () => {
@@ -201,7 +152,9 @@ export const Film: FC = () => {
             <div>
               <p className={styles.film_description}>{film?.description}</p>
             </div>
-            <div className={styles.videoContainer}>
+            {/* {
+              loading ? !loading :
+              <div className={styles.videoContainer}>
                 <div
                     id="kinoplayertop"
                     data-kinopoisk={id}
@@ -209,7 +162,15 @@ export const Film: FC = () => {
                     data-show-errors="true"
                     data-ratio="16by9"
                 />
-          </div>
+              </div>
+            } */}
+              <div className={styles.videoContainer}>
+                <div
+                    id="kinobd"
+                    data-kinopoisk={id}
+                    className={styles.video}
+                />
+              </div>
           </div>
           {/* <Slider {...settings}>
                 {
