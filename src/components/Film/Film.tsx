@@ -163,7 +163,7 @@ export const Film: FC = () => {
               </div>
           </div>
           {/* <Slider {...settings}>
-                {
+                {  
                     film?.map((item: any) => {
                     return <React.Fragment key={item.id}>
                             <div>
